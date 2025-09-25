@@ -39,3 +39,4 @@ Screenshots are available in the `screenshots/` folder and embedded in the hoste
 
 See `Coursework_Documentation.docx` for full APA-formatted references.
 
+
