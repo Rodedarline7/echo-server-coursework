@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Echo Server Coursework - Rodaline</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; background-color: #f9f9f9; }
+    h1, h2 { color: #2c3e50; }
+    a { color: #007acc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; border: 1px solid #ccc; padding: 5px; background-color: #fff; }
+    pre { background-color: #eee; padding: 1em; overflow-x: auto; border-left: 4px solid #ccc; }
+  </style>
+</head>
+<body>
+
+  <h1>Echo Server Coursework</h1>
+  <p>Welcome to my Echo Server project for [Course Name]. This site contains my source code, documentation, screenshots, and APA references.</p>
+
+ <h2>📂 Project Files</h2>
+<ul>
+  <li><a href="EchoServer.java" download>EchoServer.java</a></li>
+  <li><a href="EchoClient.java" download>EchoClient.java</a></li>
+  <li><a href="Coursework_Documentation.docx" download>Coursework Documentation (Word)</a></li>
+  <li><a href="README.md" download>README.md</a></li>
+</ul>
+
+
+  <h2>🖼️ Screenshots</h2>
+<p>Here are screenshots showing the server running and client communication:</p>
+
+<h3>Server Running</h3>
+<img src="screenshots/Picture1.png" alt="Server Running Screenshot">
+
+<h3>Client Connected and Message Echoed</h3>
+<img src="screenshots/Picture2.png" alt="Client Communication Screenshot">
+
+
+  <h2>💻 EchoClient.java</h2>
+  <pre><code>
+import java.io.*;
+import java.net.*;
+
+public class EchoClient {
+    public static void main(String[] args) {
+        String host = "localhost";
+        int port = 8081;
+
+        try (Socket socket = new Socket(host, port);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))) {
+
+            String message = "Hello from EchoClient!";
+            System.out.println("Sending: " + message);
+            out.write(message + "\n");
+            out.flush();
+
+            String response = in.readLine();
+            System.out.println("Received: " + response);
+
+        } catch (IOException e) {
+            System.err.println("Client error: " + e.getMessage());
+        }
+    }
+}
+  </code></pre>
+
+  <h2>💻 EchoServer.java</h2>
+  <pre><code>
+import java.io.*;
+import java.net.*;
+
+public class EchoServer {
+
+    public static void main(String[] args) {
+        int port = 8081;
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Echo server listening on port " + port + "...");
+
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                Thread clientThread = new Thread(new ClientHandler(clientSocket));
+                clientThread.start();
+            }
+
+        } catch (IOException e) {
+            System.err.println("Server error: " + e.getMessage());
+        }
+    }
+}
+
+class ClientHandler implements Runnable {
+    private Socket clientSocket;
+
+    public ClientHandler(Socket socket) {
+        this.clientSocket = socket;
+    }
+
+    @Override
+    public void run() {
+        String clientAddress = clientSocket.getInetAddress().getHostAddress();
+        System.out.println("Connected to " + clientAddress);
+
+        try (
+            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))
+        ) {
+            String data = in.readLine();
+            System.out.println("Received from " + clientAddress + ": " + data);
+            out.write(data + "\n");
+            out.flush();
+        } catch (IOException e) {
+            System.err.println("Error handling client " + clientAddress + ": " + e.getMessage());
+        } finally {
+            try {
+                clientSocket.close();
+                System.out.println("Connection with " + clientAddress + " closed.");
+            } catch (IOException e) {
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
+        }
+    }
+}
+  </code></pre>
+
+  <h2>📄 APA References</h2>
+  <p>APA-formatted references are included in the documentation file above.</p>
+
+  <h2>✅ Notes</h2>
+  <p>This site is hosted via GitHub Pages. All files are downloadable and viewable for grading purposes.</p>
+
+</body>
+</html>
