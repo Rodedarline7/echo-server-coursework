@@ -1,0 +1,33 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f5f8fa;
+  color: #222831;
+  margin: 0;
+  padding: 0;
+}
+nav {
+  background-color: #30475e;
+  padding: 1em 0;
+  text-align: center;
+}
+nav a {
+  color: #f05454;
+  text-decoration: none;
+  margin: 0 1.5em;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #222831;
+}
+h1, h2 {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.page-container {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 1.5em;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
