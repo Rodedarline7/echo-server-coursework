@@ -26,7 +26,7 @@ java EchoClient
 ## 🌐 Hosted Site
 
 Visit the hosted coursework site:  
-**[https://rokadesairfan.github.io/coursework-site/](https://rokadesairfan.github.io/coursework-site/)**
+**https://rodedarline7.github.io/echo-server-coursework/**
 
 Screenshots are available in the `screenshots/` folder and embedded in the hosted site:
 - `Picture1.png` – Server running and listening on port  
@@ -38,3 +38,4 @@ Screenshots are available in the `screenshots/` folder and embedded in the hoste
 - GitHub Pages is used for public hosting  
 
 See `Coursework_Documentation.docx` for full APA-formatted references.
+
