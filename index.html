@@ -2,8 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Echo Server Homepage</title>
+  <title>Home</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e6f0ff;
+      color: #003366;
+      padding: 20px;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #cce0ff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #0059b3;
+    }
+
+    button {
+      background-color: #0059b3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004080;
+    }
+
+    .page-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #0059b3;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 89, 179, 0.2);
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -14,11 +64,34 @@
     <a href="blog.html">Blog</a>
   </nav>
   <header>
-   <img src="banner.png" alt="Site Banner" width="800" height="600">
+    <img src="banner.png" alt="Site Banner" width="800" height="600">
   </header>
   <div class="page-container">
     <h1>Welcome to Echo Server</h1>
-    <p>Echo Server is your trusted platform for learning about web servers and building server-side applications. Explore our site to learn more about our team, our services, and the latest news in web technology.</p>
+    <p>Explore the world of web servers with hands-on tutorials and interactive examples.</p>
+
+    <button id="welcomeBtn">Click for a Greeting</button>
+    <p id="welcomeMsg" style="display:none;">Welcome, Rodaline! You're doing amazing work — keep going! 💙</p>
+
+    <p id="timer">You've been here for 0 seconds.</p>
   </div>
+
+  <script>
+    const welcomeBtn = document.getElementById('welcomeBtn');
+    const welcomeMsg = document.getElementById('welcomeMsg');
+    const timerDisplay = document.getElementById('timer');
+
+    if (welcomeBtn) {
+      welcomeBtn.addEventListener('click', () => {
+        welcomeMsg.style.display = 'block';
+      });
+
+      let seconds = 0;
+      setInterval(() => {
+        seconds++;
+        timerDisplay.textContent = `You've been here for ${seconds} seconds.`;
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
