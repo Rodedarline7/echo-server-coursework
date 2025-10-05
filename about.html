@@ -4,6 +4,60 @@
   <meta charset="UTF-8">
   <title>About Us</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e6f0ff;
+      color: #003366;
+      padding: 20px;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #cce0ff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #0059b3;
+    }
+
+    button {
+      background-color: #0059b3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004080;
+    }
+
+    .page-container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .hover-img {
+      width: 200px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .hover-img:hover {
+      box-shadow: 0 0 10px #0059b3;
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -19,6 +73,30 @@
   <div class="page-container">
     <h1>About Echo Server</h1>
     <p>Echo Server was founded in 2024 by a group of passionate developers. Our mission is to simplify web server concepts for students and developers of all levels. We believe in practical, hands-on learning and open collaboration.</p>
+
+    <button id="infoBtn">Show More Info</button>
+    <p id="infoMsg" style="display:none;">We also host workshops and tutorials on building echo servers using Java, Python, and C!</p>
+
+    <p id="countdown">Countdown to next workshop: <span id="daysLeft"></span> days</p>
   </div>
+
+  <script>
+    const infoBtn = document.getElementById('infoBtn');
+    const infoMsg = document.getElementById('infoMsg');
+    const daysLeftDisplay = document.getElementById('daysLeft');
+
+    if (infoBtn) {
+      infoBtn.addEventListener('click', () => {
+        infoMsg.style.display = 'block';
+      });
+
+      const nextWorkshop = new Date('2025-10-20');
+      const today = new Date();
+      const diffTime = nextWorkshop - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      daysLeftDisplay.textContent = diffDays;
+    }
+  </script>
 </body>
 </html>
+
