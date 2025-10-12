@@ -24,6 +24,22 @@
       <li>Phone: (555) 123-4567</li>
       <li>Address: 100 Server Lane, Web City, WC 12345</li>
     </ul>
+
+    <!-- Contact Form Starts Here -->
+    <h2>Send Us a Message</h2>
+    <form action="submit.php" method="post" class="contact-form">
+      <label for="name">Name:</label><br/>
+      <input type="text" id="name" name="name" required><br/><br/>
+
+      <label for="email">Email:</label><br/>
+      <input type="email" id="email" name="email" required><br/><br/>
+
+      <label for="message">Message:</label><br/>
+      <textarea id="message" name="message" rows="4" required></textarea><br/><br/>
+
+      <input type="submit" value="Submit">
+    </form>
+    <!-- Contact Form Ends Here -->
   </div>
 </body>
 </html>
